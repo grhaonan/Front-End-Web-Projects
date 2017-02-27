@@ -2,21 +2,41 @@
 
 body{
 	font-family: Helvetica, Arial, sans-serif;
-	/*padding: 20px;*/
-	/*border-style: solid;*/
-	/*border-width: 200px;*/
-	/*background: white;*/
 }
+
+ul {
+	list-style-type: none;
+	padding-left: 0px;
+}
+
 .card{
-	height: 800px;
-	width: 350px;
+	/*height: 800px;*/
+	width: 340px;
 	border:1px solid #ddd;
 	border-radius: 4px;
 	box-shadow:5px 5px 15px 0px rgba(153,153,153,0.5);
 }
+
+.top {
+	margin-left: 20px;
+}
+
+
+.middle {
+	/*text-align: center;*/
+	margin:20px 20px 20px 20px;
+}
+
+.bottom {
+	border: 1px solid #ddd;
+	padding: 20px;
+	margin: 20px 20px 20px 20px;
+}
+
 .facts{
 	font-style: italic;
 }
-span{
+
+.label{
 	font-weight:bold; 
 }
