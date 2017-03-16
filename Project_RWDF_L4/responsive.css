@@ -3,6 +3,9 @@
     flex-wrap: wrap;
 }
 
+.hero, .top-news, .scores, .weather, .recent-news {
+  order: 10;
+}
 
 
 @media screen and (max-width: 549px){
@@ -20,3 +23,48 @@
 }
 
 }
+
+@media screen and (min-width: 550px){
+
+    .hero{
+        order: 0;
+        width: 60%;
+    }
+    .weather{
+        order:1;
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width:700px){
+    .hero{
+        /*order default value is 0*/
+        /*order: 0;*/
+        width: 50%;
+    }
+
+    .news.top-news {
+        order: 1;
+        width:50%;
+    }
+
+    .scores{
+        order: 2;
+        width: 60%;
+    }
+    .weather{
+        order: 3;
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width:850px){
+    .header__inner,.nav, main {
+        width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
