@@ -73,20 +73,23 @@ var projects = {
     }
     ],
 // function to append projects related information to html
-    display: function (){
-        $("#projects").append(HTMLprojectStart);
-        projects.projects.forEach (function(element){
+display: function (){
+    $("#projects").append(HTMLprojectStart);
+    projects.projects.forEach (function(element){
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", element.title);
-            $(".project-entry:last").append(formattedProjectTitle);
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", element.dates);
-            $(".project-entry:last").append(formattedProjectDates);
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", element.description);
-            $(".project-entry:last").append(formattedProjectDescription);
-            var formattedProjectImage = HTMLprojectImage.replace("%data%", element.images);
+        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", element.title);
+        $(".project-entry:last").append(formattedProjectTitle);
+        var formattedProjectDates = HTMLprojectDates.replace("%data%", element.dates);
+        $(".project-entry:last").append(formattedProjectDates);
+        var formattedProjectDescription = HTMLprojectDescription.replace("%data%", element.description);
+        $(".project-entry:last").append(formattedProjectDescription);
+        element.images.forEach(function(image){
+            var formattedProjectImage = HTMLprojectImage.replace("%data%", image);
             $(".project-entry:last").append(formattedProjectImage);
         });
-    }
+
+    });
+}
 };
 
 
@@ -111,21 +114,20 @@ var bio = {
         $("#header").prepend(formattedName);
 
         var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        $("#topContacts").append(formattedMobile);
-        $("#footerContacts").append(formattedMobile);
+        $("#topContacts, #footerContacts" ).append(formattedMobile);
 
         var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        $("#topContacts").append(formattedEmail);
-        $("#footerContacts").append(formattedEmail);
+        $("#topContacts, #footerContacts" ).append(formattedEmail);
 
         var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-        $("#topContacts").append(formattedGithub);
-        $("#footerContacts").append(formattedGithub);
+        $("#topContacts, #footerContacts" ).append(formattedGithub);
+
+
 
 
         var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        $("#topContacts").append(formattedLocation);
-        $("#footerContacts").append(formattedLocation);
+        $("#topContacts, #footerContacts" ).append(formattedLocation);
+
 
 
         var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
@@ -144,42 +146,42 @@ var bio = {
 
 var education = {
 // Recoding school related information
-    schools: [
-    {
-        name: "BeiHang University",
-        location: "Beijing, China",
-        degree: "BA",
-        dates: "2003-2007",
-        url: "www.beihang.edu",
-        majors: [
-        "Telecommunication Engineering"
-        ]
-    },
-    {
-        name: "Chalmers University Of Technology",
-        location: "Gothenburg, Sweden",
-        degree: "Master",
-        dates: "2007-2009",
-        url: "www.chalmers.se",
-        majors: [
-        "Telecommunication Engineering"
-        ]
-    }
-    ],
-    onlineCourses:[
-    {
-        title: "Frontend Developer NanoDegree",
-        school: "Udacity",
-        dates: "2017",
-        url: "www.udacity.com"
-    }
-    ],
+schools: [
+{
+    name: "BeiHang University",
+    location: "Beijing, China",
+    degree: "BA",
+    dates: "2003-2007",
+    url: "http://www.beihang.edu",
+    majors: [
+    "Telecommunication Engineering"
+    ]
+},
+{
+    name: "Chalmers University Of Technology",
+    location: "Gothenburg, Sweden",
+    degree: "Master",
+    dates: "2007-2009",
+    url: "http://www.chalmers.se",
+    majors: [
+    "Telecommunication Engineering"
+    ]
+}
+],
+onlineCourses:[
+{
+    title: "Frontend Developer NanoDegree",
+    school: "Udacity",
+    dates: "2017",
+    url: "http://www.udacity.com"
+}
+],
      // function to append school related information to html
-    display:function(){
+     display:function(){
         $("#education").append(HTMLschoolStart);
         education.schools.forEach(function(element){
 
-            var formattedEducationName = HTMLschoolName.replace("%data%", element.name);
+            var formattedEducationName = HTMLschoolName.replace("%data%", element.name).replace("#", element.url);
             var formattedDegree = HTMLschoolDegree.replace("%data%", element.degree);
             var formattedEducationNameAndDegree = formattedEducationName + formattedDegree;
             $(".education-entry:last").append(formattedEducationNameAndDegree);
@@ -195,6 +197,7 @@ var education = {
         });
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
+
         education.onlineCourses.forEach(function(element){
             var formattedOnlineCourseTitle = HTMLonlineTitle.replace("%data%", element.title);
             var formattedOnlineCourseSchool = HTMLonlineSchool.replace("%data%", element.school);
